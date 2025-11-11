@@ -1,0 +1,14 @@
+{
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "popular_movies": "Popular Movies",
+  "search": "Search",
+  "favorites": "Favorites",
+  "release_date": "Release Date",
+  "rating": "Rating",
+  "overview": "Overview",
+  "genre": "Genre",
+  "add_to_favorites": "Add to Favorites",
+  "remove_from_favorites": "Remove from Favorites"
+}

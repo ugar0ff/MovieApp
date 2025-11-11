@@ -1,0 +1,14 @@
+{
+  "login": "लॉग इन",
+  "username": "उपयोगकर्ता नाम",
+  "password": "पासवर्ड",
+  "popular_movies": "लोकप्रिय फ़िल्में",
+  "search": "खोज",
+  "favorites": "पसंदीदा",
+  "release_date": "रिलीज़ तिथि",
+  "rating": "रेटिंग",
+  "overview": "सारांश",
+  "genre": "शैली",
+  "add_to_favorites": "पसंदीदा में जोड़ें",
+  "remove_from_favorites": "पसंदीदा से हटाएं"
+}
