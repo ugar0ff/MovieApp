@@ -1,9 +1,11 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { store } from './src/store'
+import { store, persistor } from './src/store'
 import { extendTheme, NativeBaseProvider } from 'native-base'
 import { MainNavigation } from './src/navigation/MainNavigation'
 import { LogBox } from 'react-native'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Spinner } from 'native-base'
 
 LogBox.ignoreLogs([
   'In React 18, SSRProvider is not necessary and is a noop',
@@ -23,7 +25,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <NativeBaseProvider theme={theme}>
-        <MainNavigation />
+        <PersistGate loading={<Spinner />} persistor={persistor}>
+          <MainNavigation />
+        </PersistGate>
       </NativeBaseProvider>
     </Provider>
   )
