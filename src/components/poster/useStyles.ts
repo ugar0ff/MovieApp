@@ -1,8 +1,9 @@
 import { createUseStyles } from '@helpers/createUseStyles'
 
 export const { useStyles } = createUseStyles(() => ({
-  container: {
-    flexGrow: 1,
-    backgroundColor: '#fff',
+  poster: {
+    width: '100%',
+    height: 300,
+    borderRadius: 12,
   },
 }))

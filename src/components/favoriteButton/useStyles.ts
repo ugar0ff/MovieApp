@@ -1,8 +1,7 @@
 import { createUseStyles } from '@helpers/createUseStyles'
 
 export const { useStyles } = createUseStyles(() => ({
-  container: {
-    flexGrow: 1,
-    backgroundColor: '#fff',
+  button: {
+    marginTop: 16,
   },
 }))

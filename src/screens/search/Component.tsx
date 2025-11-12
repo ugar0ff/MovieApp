@@ -1,9 +1,9 @@
-import React from 'react'
-import { View, TextInput, FlatList, Text, TouchableOpacity, ActivityIndicator, Image } from 'react-native'
-import { styles } from './styles'
-import { keyMap, useTranslation } from '@localization'
+import React, { memo, useCallback } from 'react'
+import { View, Input, Text } from 'native-base'
+import { MoviesList } from '@components/moviesList'
 import type { Movie } from '@types'
-import Config from 'react-native-config'
+import { keyMap, useTranslation } from '@localization'
+import { useStyles } from './styles'
 
 type TProps = {
   query: string
@@ -16,7 +16,7 @@ type TProps = {
   isFetching: boolean
 }
 
-export const Component: React.FC<TProps> = ({
+export const Component = memo(({
   query,
   setQuery,
   movies,
@@ -24,13 +24,16 @@ export const Component: React.FC<TProps> = ({
   isError,
   onMoviePress,
   onEndReached,
-  isFetching,
-}) => {
+  isFetching
+}: TProps) => {
+  const styles = useStyles()
   const { t } = useTranslation()
+
+  const handlePressMovie = useCallback((id: number) => onMoviePress(id), [onMoviePress])
 
   return (
     <View style={styles.container}>
-      <TextInput
+      <Input
         placeholder={t(keyMap.search_placeholder)}
         value={query}
         onChangeText={setQuery}
@@ -40,24 +43,13 @@ export const Component: React.FC<TProps> = ({
       {isLoading && <Text>{t(keyMap.loading)}</Text>}
       {isError && <Text>{t(keyMap.error_loading_movies)}</Text>}
 
-      <FlatList
-        data={movies}
-        keyExtractor={(item) => item.id.toString()}
-        style={styles.list}
-        contentContainerStyle={styles.listContent}
+      <MoviesList
+        movies={movies}
+        onPressMovie={handlePressMovie}
         onEndReached={onEndReached}
-        onEndReachedThreshold={0.4}
-        ListFooterComponent={
-          isFetching ? <ActivityIndicator style={{ marginVertical: 20 }} size="small" /> : null
-        }
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.item} onPress={() => onMoviePress(item.id)}>
-            <Image source={{ uri: `${Config.TMDB_DB}${item.poster_path}` }} style={styles.poster} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.rating}>⭐ {item.vote_average.toFixed(1)}</Text>
-          </TouchableOpacity>
-        )}
+        isFetching={isFetching}
+        emptyMessage={t(keyMap.no_movies)}
       />
     </View>
   )
-}
+})

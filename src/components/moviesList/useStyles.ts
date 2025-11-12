@@ -2,14 +2,14 @@ import { createUseStyles } from '@helpers/createUseStyles'
 
 export const { useStyles } = createUseStyles(() => ({
   container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
-    gap: 16,
+    paddingBottom: 16,
   },
-  input: {
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    marginBottom: 16,
+  emptyContainer: {
+    flex: 1,
+    marginTop: 50,
+    alignItems: 'center',
+  },
+  indicator: {
+    marginVertical: 20,
   },
 }))

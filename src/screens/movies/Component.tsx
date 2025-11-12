@@ -1,42 +1,31 @@
-import React, { memo } from 'react'
-import { FlatList, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native'
-import { useStyles } from './useStyles'
+import React, { memo, useCallback } from 'react'
+import { MoviesList } from '@components/moviesList'
 import type { Movie } from '@types'
-import Config from 'react-native-config'
+import { keyMap, useTranslation } from '@localization'
+import { useStyles } from './useStyles'
 
-type TProps = {
+type Props = {
   movies: Movie[]
   onPressMovie: (id: number) => void
   onEndReached: () => void
   isFetching: boolean
 }
 
-const Component = ({ movies, onPressMovie, onEndReached, isFetching }: TProps) => {
+const Component = ({ movies, onPressMovie, onEndReached, isFetching }: Props) => {
   const styles = useStyles()
+  const { t } = useTranslation()
+  const handlePressMovie = useCallback((id: number) => onPressMovie(id), [onPressMovie])
 
   return (
-    <FlatList
-      data={movies}
-      keyExtractor={(item) => item.id.toString()}
-      style={styles.list}
-      contentContainerStyle={styles.container}
+    <MoviesList
+      movies={movies}
+      onPressMovie={handlePressMovie}
       onEndReached={onEndReached}
-      onEndReachedThreshold={0.4}
-      ListFooterComponent={
-        isFetching ? (
-          <ActivityIndicator style={{ marginVertical: 20 }} size="small" />
-        ) : null
-      }
-      renderItem={({ item }) => (
-        <TouchableOpacity style={styles.item} onPress={() => onPressMovie(item.id)}>
-          <Image source={{ uri: `${Config.TMDB_IMAGE}${item.poster_path}` }} style={styles.poster} />
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.rating}>⭐ {item.vote_average.toFixed(1)}</Text>
-        </TouchableOpacity>
-      )}
+      isFetching={isFetching}
+      emptyMessage={t(keyMap.no_movies)}
+      containerStyle={styles.container}
     />
   )
 }
-
 
 export default memo(Component)

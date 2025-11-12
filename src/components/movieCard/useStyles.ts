@@ -2,14 +2,13 @@ import { createUseStyles } from '@helpers/createUseStyles'
 
 export const { useStyles } = createUseStyles(() => ({
   container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
-    gap: 16,
-  },
-  input: {
-    borderRadius: 8,
-    backgroundColor: '#fff',
     marginBottom: 16,
+    borderRadius: 12,
+    overflow: 'hidden',
+    backgroundColor: '#e6e6e6',
+  },
+  poster: {
+    width: '100%',
+    height: 200,
   },
 }))
