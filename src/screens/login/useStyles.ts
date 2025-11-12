@@ -4,15 +4,13 @@ export const { useStyles } = createUseStyles(() => ({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    paddingHorizontal: 16,
   },
   input: {
-    borderWidth: 1,
     borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
+    backgroundColor: '#fff',
   },
   error: {
-    marginBottom: 12,
+    textAlign: 'center',
   },
 }))

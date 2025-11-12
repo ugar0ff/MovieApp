@@ -17,22 +17,53 @@ import { MovieDetailScreen } from '@screens/movieDetail'
 import { ROUTES } from '@constants'
 import { SearchScreen } from '@screens/search'
 import type { TSearchScreenParams } from '@screens/search'
+import { keyMap, useTranslation } from '@localization'
 
 export type RootStackParamList = TFavoritesScreenParams & TLanguagesScreenParams & TLoginScreenParams & TMovieDetailScreenParams & TMoviesScreenParams & TSettingsScreenParams & TSearchScreenParams
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export const MainNavigation = () => {
+  const { t } = useTranslation()
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={ROUTES.Login}>
-        <Stack.Screen name={ROUTES.Login} component={LoginScreen} />
-        <Stack.Screen name={ROUTES.Movies} component={MoviesScreen} />
-        <Stack.Screen name={ROUTES.MovieDetail} component={MovieDetailScreen} />
-        <Stack.Screen name={ROUTES.Favorites} component={FavoritesScreen} />
-        <Stack.Screen name={ROUTES.Settings} component={SettingsScreen} />
-        <Stack.Screen name={ROUTES.Languages} component={LanguagesScreen} />
-        <Stack.Screen name={ROUTES.Search} component={SearchScreen} />
+        <Stack.Screen
+          name={ROUTES.Login}
+          component={LoginScreen}
+          options={{ title: t(keyMap.login) }}
+        />
+        <Stack.Screen
+          name={ROUTES.Movies}
+          component={MoviesScreen}
+          options={{ title: t(keyMap.movies) }}
+        />
+        <Stack.Screen
+          name={ROUTES.MovieDetail}
+          component={MovieDetailScreen}
+          options={{ title: t(keyMap.movieDetail) }}
+        />
+        <Stack.Screen
+          name={ROUTES.Favorites}
+          component={FavoritesScreen}
+          options={{ title: t(keyMap.favorites) }}
+        />
+        <Stack.Screen
+          name={ROUTES.Settings}
+          component={SettingsScreen}
+          options={{ title: t(keyMap.settings) }}
+        />
+        <Stack.Screen
+          name={ROUTES.Languages}
+          component={LanguagesScreen}
+          options={{ title: t(keyMap.languages) }}
+        />
+        <Stack.Screen
+          name={ROUTES.Search}
+          component={SearchScreen}
+          options={{ title: t(keyMap.search) }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

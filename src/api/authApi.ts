@@ -1,6 +1,6 @@
 import Config from 'react-native-config'
 
-export const getRequestToken = async (): Promise<string> => {
+export const getRequestTokenApi = async (): Promise<string> => {
   const res = await fetch(`${Config.TMDB_DB}authentication/token/new?api_key=${Config.TMDB_API_KEY}`)
   const data = await res.json()
   if (!res.ok) throw new Error(data.status_message || 'Error fetching token')

@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Component } from './Component'
 import { ROUTES } from '@constants'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import type { TMovieDetailScreenParams } from '@screens/movieDetail'
+import type { TMovieDetailScreenParams } from '../movieDetail'
 import { useSearchMoviesQuery } from '@store/tmdbApi'
 import type { Movie } from '@types'
 

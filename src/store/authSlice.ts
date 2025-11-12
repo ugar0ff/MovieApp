@@ -1,6 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getRequestToken, createSessionApi } from '@api/authApi'
+import { getRequestTokenApi, createSessionApi } from '@api/authApi'
 
 type AuthState = {
   requestToken: string | null
@@ -26,7 +26,7 @@ export const fetchRequestToken = createAsyncThunk<
   { rejectValue: string }
 >('auth/fetchRequestToken', async (_, { rejectWithValue }) => {
   try {
-    const token = await getRequestToken()
+    const token = await getRequestTokenApi()
     return token
   } catch (err) {
     return rejectWithValue((err as Error).message)
