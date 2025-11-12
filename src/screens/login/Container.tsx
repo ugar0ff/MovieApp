@@ -5,7 +5,7 @@ import Component from './Component'
 import type { AppDispatch, RootState } from '@store'
 import { useNavigation } from '@react-navigation/native'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { ROUTES, URLS } from '@constants'
+import { ROUTES } from '@constants'
 import type { TMoviesScreenParams } from '../movies'
 import Config from 'react-native-config'
 
@@ -29,7 +29,7 @@ const Container = () => {
     const fetchRequestToken = async () => {
       try {
         const res = await fetch(
-          `${URLS.DB}authentication/token/new?api_key=${Config.TMDB_API_KEY}`
+          `${Config.TMDB_DB}authentication/token/new?api_key=${Config.TMDB_API_KEY}`
         )
         const data = await res.json()
         if (data.success && data.request_token) {

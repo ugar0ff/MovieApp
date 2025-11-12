@@ -15,7 +15,8 @@ import { SettingsScreen } from '@screens/settings'
 import type { TMovieDetailScreenParams } from '@screens/movieDetail'
 import { MovieDetailScreen } from '@screens/movieDetail'
 import { ROUTES } from '@constants'
-import { SearchScreen, TSearchScreenParams } from '@screens/search'
+import { SearchScreen } from '@screens/search'
+import type { TSearchScreenParams } from '@screens/search'
 
 export type RootStackParamList = TFavoritesScreenParams & TLanguagesScreenParams & TLoginScreenParams & TMovieDetailScreenParams & TMoviesScreenParams & TSettingsScreenParams & TSearchScreenParams
 

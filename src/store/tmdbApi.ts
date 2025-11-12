@@ -1,8 +1,11 @@
-import { URLS } from '@constants'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Movie } from '@types'
-import i18n from 'localization/i18n'
 import Config from 'react-native-config'
+import {
+  getPopularMoviesUrl,
+  searchMoviesUrl,
+  getMovieDetailsUrl,
+} from '@api/tmdbApi'
 
 type MoviesResponse = {
   page: number
@@ -14,20 +17,17 @@ type MoviesResponse = {
 export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: URLS.DB,
+    baseUrl: Config.TMDB_DB,
   }),
   endpoints: (builder) => ({
-    getPopularMovies: builder.query<MoviesResponse, number | void>({
-      query: (page = 1) => `movie/popular?api_key=${Config.TMDB_API_KEY}&language=${i18n.locale}&page=${page}`, // TODO: add localization
+    getPopularMovies: builder.query<MoviesResponse, number | undefined>({
+      query: (page) => getPopularMoviesUrl(page),
     }),
-    searchMovies: builder.query<MoviesResponse, { query: string; page: number }>({
-      query: ({ query, page }) =>
-        `search/movie?api_key=${Config.TMDB_API_KEY}&language=${i18n.locale}&query=${encodeURIComponent(
-          query
-        )}&page=${page}&include_adult=false`,
+    searchMovies: builder.query<MoviesResponse, { query: string; page?: number }>({
+      query: ({ query, page }) => searchMoviesUrl(query, page),
     }),
     getMovieDetails: builder.query<Movie, number>({
-      query: (id) => `movie/${id}?api_key=${Config.TMDB_API_KEY}&language=${i18n.locale}`,
+      query: (id) => getMovieDetailsUrl(id),
     }),
   }),
 })

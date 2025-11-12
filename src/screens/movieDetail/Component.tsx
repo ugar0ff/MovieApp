@@ -2,8 +2,8 @@ import React, { memo } from 'react'
 import { ScrollView, Text, Image, Button, View } from 'react-native'
 import { useStyles } from './useStyles'
 import type { Movie } from '@types'
-import { URLS } from '@constants'
 import { keyMap, useTranslation } from '@localization'
+import Config from 'react-native-config'
 
 type TProps = {
   movie: Movie
@@ -17,7 +17,7 @@ const Component = ({ movie, isFavorite, onToggleFavorite }: TProps) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image source={{ uri: `${URLS.Image}${movie.poster_path}` }} style={styles.poster} />
+      <Image source={{ uri: `${Config.TMDB_IMAGE}${movie.poster_path}` }} style={styles.poster} />
       <Text style={styles.title}>{movie.title}</Text>
       <Text style={styles.rating}>
         {t(keyMap.rating)}: {movie.vote_average.toFixed(1)}

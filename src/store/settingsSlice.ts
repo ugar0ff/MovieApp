@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export type LanguageOption = 'system' | 'en' | 'hi'
 
-export interface SettingsState {
+type SettingsState = {
   language: LanguageOption
 }
 

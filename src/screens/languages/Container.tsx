@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as RNLocalize from 'react-native-localize'
 import Component from './Component'
 import type { RootState, AppDispatch } from '@store'
-import { changeLanguage } from '@localization'
 import { setLanguage, type LanguageOption } from '@store/settingsSlice'
 import type { ROUTES } from '@constants'
+import { useTranslation } from '@localization'
 
 const options = ['System', 'English', 'Hindi']
 
@@ -17,6 +17,7 @@ const Container = () => {
   const dispatch = useDispatch<AppDispatch>()
   const userLang = useSelector((state: RootState) => state.settings.language)
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const { changeLanguage } = useTranslation()
 
   useEffect(() => {
     if (userLang === 'en') setSelectedIndex(1)

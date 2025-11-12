@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { FlatList, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native'
 import { useStyles } from './useStyles'
 import type { Movie } from '@types'
-import { URLS } from '@constants'
+import Config from 'react-native-config'
 
 type TProps = {
   movies: Movie[]
@@ -29,7 +29,7 @@ const Component = ({ movies, onPressMovie, onEndReached, isFetching }: TProps) =
       }
       renderItem={({ item }) => (
         <TouchableOpacity style={styles.item} onPress={() => onPressMovie(item.id)}>
-          <Image source={{ uri: `${URLS.Image}${item.poster_path}` }} style={styles.poster} />
+          <Image source={{ uri: `${Config.TMDB_IMAGE}${item.poster_path}` }} style={styles.poster} />
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.rating}>⭐ {item.vote_average.toFixed(1)}</Text>
         </TouchableOpacity>

@@ -3,7 +3,7 @@ import { View, TextInput, FlatList, Text, TouchableOpacity, ActivityIndicator, I
 import { styles } from './styles'
 import { keyMap, useTranslation } from '@localization'
 import type { Movie } from '@types'
-import { URLS } from '@constants'
+import Config from 'react-native-config'
 
 type TProps = {
   query: string
@@ -52,7 +52,7 @@ export const Component: React.FC<TProps> = ({
         }
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.item} onPress={() => onMoviePress(item.id)}>
-            <Image source={{ uri: `${URLS.Image}${item.poster_path}` }} style={styles.poster} />
+            <Image source={{ uri: `${Config.TMDB_DB}${item.poster_path}` }} style={styles.poster} />
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.rating}>⭐ {item.vote_average.toFixed(1)}</Text>
           </TouchableOpacity>

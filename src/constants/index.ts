@@ -13,8 +13,3 @@ export const ROUTES = {
   Languages: 'Languages',
   Search: 'Search',
 } as const
-
-export const URLS = {
-  Image: 'https://image.tmdb.org/t/p/w500',
-  DB: 'https://api.themoviedb.org/3/',
-}
