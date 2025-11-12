@@ -6,6 +6,7 @@ import { useStyles } from './useStyles'
 import type { Movie } from '@types'
 import { MovieCard } from '../movieCard'
 import { keyMap } from '@localization'
+import { CARD_HEIGHT, LIST_GAP } from '@constants'
 
 type TProps = {
   movies: Movie[]
@@ -47,6 +48,11 @@ const Component = ({ movies, onPressMovie, onEndReached, isFetching, emptyMessag
       ListEmptyComponent={renderEmpty}
       ListFooterComponent={renderFooter}
       renderItem={renderItem}
+      getItemLayout={(_, index) => ({
+        length: CARD_HEIGHT + LIST_GAP,
+        offset: (CARD_HEIGHT + LIST_GAP) * index,
+        index,
+      })}
     />
   )
 }

@@ -49,6 +49,7 @@ export const Component = memo(({
         onEndReached={onEndReached}
         isFetching={isFetching}
         emptyMessage={t(keyMap.no_movies)}
+        containerStyle={styles.list}
       />
     </View>
   )

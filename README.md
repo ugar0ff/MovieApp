@@ -58,7 +58,7 @@ npx react-native run-ios
 
 Watch the demo video of the app in action:
 
-[![Watch Demo Video](https://img.freepik.com/free-vector/black-video-player-template-mockup-design_1017-36895.jpg?semt=ais_hybrid&w=740&q=80)](https://drive.google.com/file/d/1rmKuSmyYOY31eMLWcmU1McdSRr4iujp8/view?usp=sharing)
+[![Watch Demo Video](https://img.freepik.com/free-vector/black-video-player-template-mockup-design_1017-36895.jpg?semt=ais_hybrid&w=740&q=80)](https://drive.google.com/file/d/1738FER1AnJ1LDtYI5uYcyW_liqrSeV11/view?usp=sharing)
 
 Or click the link for download: [Android APK file](https://drive.google.com/file/d/1cNg7MPp41-bQ0ZM-yfyRaEQL4rhZoFGG/view?usp=sharing)
 

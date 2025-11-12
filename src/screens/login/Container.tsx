@@ -40,6 +40,7 @@ const Container = () => {
         dispatch(createSession({ username, password, requestToken }))
       } else {
         if (__DEV__) console.warn('Request token not ready yet')
+        // TODO: reorganize logic, if !requestToken we should disable the button
       }
     },
     [dispatch, requestToken]

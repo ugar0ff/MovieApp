@@ -1,8 +1,9 @@
+import { LIST_GAP } from '@constants'
 import { createUseStyles } from '@helpers/createUseStyles'
 
 export const { useStyles } = createUseStyles(() => ({
   container: {
-    paddingBottom: 16,
+    gap: LIST_GAP,
   },
   emptyContainer: {
     flex: 1,

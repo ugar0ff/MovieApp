@@ -1,8 +1,12 @@
 import { createUseStyles } from '@helpers/createUseStyles'
 
-export const { useStyles } = createUseStyles(() => ({
+export const { useStyles } = createUseStyles(({ insets }) => ({
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: '#fff',
+  },
+  contentContainer: {
+    flexGrow: 1,
+    paddingBottom: insets.bottom + 16,
   },
 }))

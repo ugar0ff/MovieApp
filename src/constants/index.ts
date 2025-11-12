@@ -8,10 +8,10 @@ export const ROUTES = {
   Login: 'Login',
   Movies: 'Movies',
   MovieDetail: 'MovieDetail',
-  Favorites: 'Favorites',
-  Settings: 'Settings',
-  Languages: 'Languages',
   Search: 'Search',
 } as const
 
 export const languagesList = ['en', 'hi']
+
+export const CARD_HEIGHT = 150
+export const LIST_GAP = 16
