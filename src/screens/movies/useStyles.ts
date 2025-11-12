@@ -2,10 +2,13 @@ import { createUseStyles } from '@helpers/createUseStyles'
 
 export const { useStyles } = createUseStyles(() => ({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     paddingHorizontal: 16,
     paddingTop: 16,
+    paddingBottom: 16,
+  },
+  list: {
+    flex: 1,
   },
   searchContainer: {
     marginBottom: 16,
@@ -18,14 +21,11 @@ export const { useStyles } = createUseStyles(() => ({
     paddingHorizontal: 12,
     fontSize: 16,
   },
-  list: {
-    flexGrow: 1,
-  },
   item: {
     marginBottom: 16,
     borderRadius: 12,
     overflow: 'hidden',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#e6e6e6',
   },
   poster: {
     width: '100%',

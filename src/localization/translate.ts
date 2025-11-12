@@ -1,32 +1,21 @@
 import { useState, useEffect } from 'react'
-import type { AppStateStatus } from 'react-native'
-import { AppState } from 'react-native'
-import I18n from './i18n'
+import i18n from './i18n'
 
 export const useTranslation = () => {
-  const [, setLocale] = useState(I18n.locale)
+  const [locale, setLocale] = useState(i18n.locale)
 
   useEffect(() => {
-    const handleAppStateChange = (nextAppState: AppStateStatus) => {
-      if (nextAppState === 'active') {
-        const current = Intl.DateTimeFormat().resolvedOptions().locale
-        if (current && current !== I18n.locale) {
-          I18n.locale = current
-          setLocale(current)
-        }
-      }
-    }
+    i18n.locale = locale
+  }, [locale])
 
-    const subscription = AppState.addEventListener('change', handleAppStateChange)
+  const t = (key: string, params?: Record<string, any>) => {
+    return i18n.t ? i18n.t(key, params) : key
+  }
 
-    return () => {
-      subscription.remove()
-    }
-  }, [])
+  const changeLanguage = (code: string) => {
+    i18n.locale = code
+    setLocale(code)
+  }
 
-  return I18n.t
-}
-
-export const changeLanguage = (code: string): void => {
-  I18n.locale = code
+  return { t, locale, changeLanguage }
 }
