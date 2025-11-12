@@ -13,7 +13,10 @@ import { SearchScreen } from '@screens/search'
 import type { TSearchScreenParams } from '@screens/search'
 import { keyMap, useTranslation } from '@localization'
 
-export type RootStackParamList = TLoginScreenParams & TMovieDetailScreenParams & TMoviesScreenParams & TSearchScreenParams
+export type RootStackParamList = TLoginScreenParams &
+  TMovieDetailScreenParams &
+  TMoviesScreenParams &
+  TSearchScreenParams
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 

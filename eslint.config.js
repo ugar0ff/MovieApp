@@ -1,9 +1,11 @@
 const tsParser = require('@typescript-eslint/parser')
 const tsPlugin = require('@typescript-eslint/eslint-plugin')
+const prettierPlugin = require('eslint-plugin-prettier')
+const prettierConfig = require('eslint-config-prettier')
 
 module.exports = [
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx,js,jsx}'],
     ignores: ['node_modules', 'Pods', 'build'],
     languageOptions: {
       parser: tsParser,
@@ -15,28 +17,36 @@ module.exports = [
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
+      prettier: prettierPlugin,
     },
     rules: {
-      semi: ['error', 'never'],
-      quotes: ['error', 'single'],
+      ...prettierConfig.rules,
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          semi: false,
+          printWidth: 100,
+          tabWidth: 2,
+          trailingComma: 'all',
+          bracketSpacing: true,
+          arrowParens: 'avoid',
+        },
+      ],
       'no-console': 'warn',
-      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      quotes: ['error', 'single'],
+      semi: ['error', 'never'],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   {
     files: ['*.js', '*.cjs'],
-    languageOptions: {
-      parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-      },
-    },
     rules: {
       'no-console': 'warn',
-      semi: ['error', 'never'],
       quotes: ['error', 'single'],
+      semi: ['error', 'never'],
     },
   },
 ]

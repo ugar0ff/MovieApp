@@ -17,7 +17,14 @@ type TProps = {
   containerStyle?: StyleProp<ViewStyle>
 }
 
-const Component = ({ movies, onPressMovie, onEndReached, isFetching, emptyMessage, containerStyle }: TProps) => {
+const Component = ({
+  movies,
+  onPressMovie,
+  onEndReached,
+  isFetching,
+  emptyMessage,
+  containerStyle,
+}: TProps) => {
   const styles = useStyles()
 
   const contentStyle = useMemo(() => [styles.container, containerStyle], [containerStyle])
@@ -31,17 +38,20 @@ const Component = ({ movies, onPressMovie, onEndReached, isFetching, emptyMessag
     )
   }, [isFetching, emptyMessage])
 
-  const renderFooter = useMemo(() => (isFetching ? <Spinner style={styles.indicator} /> : null), [isFetching])
+  const renderFooter = useMemo(
+    () => (isFetching ? <Spinner style={styles.indicator} /> : null),
+    [isFetching],
+  )
 
   const renderItem = useCallback(
     ({ item }: { item: Movie }) => <MovieCard movie={item} onPress={() => onPressMovie(item.id)} />,
-    [onPressMovie]
+    [onPressMovie],
   )
 
   return (
     <FlatList
       data={movies}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={item => item.id.toString()}
       contentContainerStyle={contentStyle}
       onEndReached={onEndReached}
       onEndReachedThreshold={0.4}

@@ -20,18 +20,17 @@ const initialState: AuthState = {
   error: null,
 }
 
-export const fetchRequestToken = createAsyncThunk<
-  string,
-  void,
-  { rejectValue: string }
->('auth/fetchRequestToken', async (_, { rejectWithValue }) => {
-  try {
-    const token = await getRequestTokenApi()
-    return token
-  } catch (err) {
-    return rejectWithValue((err as Error).message)
-  }
-})
+export const fetchRequestToken = createAsyncThunk<string, void, { rejectValue: string }>(
+  'auth/fetchRequestToken',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = await getRequestTokenApi()
+      return token
+    } catch (err) {
+      return rejectWithValue((err as Error).message)
+    }
+  },
+)
 
 export const createSession = createAsyncThunk<
   string,
@@ -61,8 +60,8 @@ const authSlice = createSlice({
       state.error = null
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchRequestToken.pending, (state) => {
+  extraReducers: builder => {
+    builder.addCase(fetchRequestToken.pending, state => {
       state.loading = true
       state.error = null
     })
@@ -75,7 +74,7 @@ const authSlice = createSlice({
       state.error = action.payload ?? 'Unknown error'
     })
 
-    builder.addCase(createSession.pending, (state) => {
+    builder.addCase(createSession.pending, state => {
       state.loading = true
       state.error = null
     })

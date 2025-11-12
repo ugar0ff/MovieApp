@@ -10,7 +10,9 @@ const defaultLanguage = languagesList[0]
 i18n.defaultLocale = defaultLanguage
 
 const locales = RNLocalize.getLocales()
-i18n.locale = locales.length && languagesList.includes(locales[0].languageCode) ? 
-    locales[0].languageCode : defaultLanguage
+i18n.locale =
+  locales.length && languagesList.includes(locales[0].languageCode)
+    ? locales[0].languageCode
+    : defaultLanguage
 
 export default i18n

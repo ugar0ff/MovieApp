@@ -7,7 +7,7 @@ export const getPopularMoviesUrl = (page?: number): string => {
 
 export const searchMoviesUrl = (query: string, page?: number): string => {
   return `search/movie?api_key=${Config.TMDB_API_KEY}&language=${i18n.locale}&query=${encodeURIComponent(
-    query
+    query,
   )}&page=${page ?? 1}&include_adult=false`
 }
 

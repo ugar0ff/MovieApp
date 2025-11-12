@@ -8,7 +8,7 @@ export const useFavorite = (movie?: Movie) => {
   const dispatch = useDispatch<AppDispatch>()
   const favorites = useSelector((state: RootState) => state.favorites.movies)
 
-  const isFavorite = movie ? favorites.some((m) => m.id === movie.id) : false
+  const isFavorite = movie ? favorites.some(m => m.id === movie.id) : false
 
   const toggleFavorite = useCallback(() => {
     if (!movie) return

@@ -32,10 +32,10 @@ const Container = () => {
 
   useEffect(() => {
     if (data?.results) {
-      setMovies((prev) => {
+      setMovies(prev => {
         const map = new Map<number, Movie>()
-        if (page !== 1) prev.forEach((movie) => map.set(movie.id, movie))
-        data.results.forEach((movie) => map.set(movie.id, movie))
+        if (page !== 1) prev.forEach(movie => map.set(movie.id, movie))
+        data.results.forEach(movie => map.set(movie.id, movie))
         return Array.from(map.values())
       })
     }
@@ -57,17 +57,19 @@ const Container = () => {
 
   const handlePressMovie = useCallback(
     (id: number) => navigation.navigate(ROUTES.MovieDetail, { movieId: id }),
-    [navigation]
+    [navigation],
   )
 
   const handleLoadMore = useCallback(() => {
-    if (!isFetching && data && data.page < data.total_pages) setPage((prev) => prev + 1)
+    if (!isFetching && data && data.page < data.total_pages) setPage(prev => prev + 1)
   }, [data, isFetching])
 
   if (isLoading && page === 1) {
-    return <View style={styles.loading}>
-      <ActivityIndicator size="large" />
-    </View>
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" />
+      </View>
+    )
   }
 
   if (error) {

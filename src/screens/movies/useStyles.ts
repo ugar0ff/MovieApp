@@ -10,7 +10,7 @@ export const { useStyles } = createUseStyles(({ insets }) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  error: { 
+  error: {
     textAlign: 'center',
     marginTop: 40,
   },

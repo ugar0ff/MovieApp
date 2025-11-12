@@ -4,7 +4,16 @@ import favoritesReducer from './favoritesSlice'
 import authReducer from './authSlice'
 import settingsReducer from './settingsSlice'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist'
 
 const favoritesPersistConfig = {
   key: 'favorites',
@@ -21,7 +30,7 @@ export const store = configureStore({
     settings: settingsReducer,
     [tmdbApi.reducerPath]: tmdbApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

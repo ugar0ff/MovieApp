@@ -16,41 +16,43 @@ type TProps = {
   isFetching: boolean
 }
 
-export const Component = memo(({
-  query,
-  setQuery,
-  movies,
-  isLoading,
-  isError,
-  onMoviePress,
-  onEndReached,
-  isFetching
-}: TProps) => {
-  const styles = useStyles()
-  const { t } = useTranslation()
+export const Component = memo(
+  ({
+    query,
+    setQuery,
+    movies,
+    isLoading,
+    isError,
+    onMoviePress,
+    onEndReached,
+    isFetching,
+  }: TProps) => {
+    const styles = useStyles()
+    const { t } = useTranslation()
 
-  const handlePressMovie = useCallback((id: number) => onMoviePress(id), [onMoviePress])
+    const handlePressMovie = useCallback((id: number) => onMoviePress(id), [onMoviePress])
 
-  return (
-    <View style={styles.container}>
-      <Input
-        placeholder={t(keyMap.search_placeholder)}
-        value={query}
-        onChangeText={setQuery}
-        style={styles.input}
-      />
+    return (
+      <View style={styles.container}>
+        <Input
+          placeholder={t(keyMap.search_placeholder)}
+          value={query}
+          onChangeText={setQuery}
+          style={styles.input}
+        />
 
-      {isLoading && <Text>{t(keyMap.loading)}</Text>}
-      {isError && <Text>{t(keyMap.error_loading_movies)}</Text>}
+        {isLoading && <Text>{t(keyMap.loading)}</Text>}
+        {isError && <Text>{t(keyMap.error_loading_movies)}</Text>}
 
-      <MoviesList
-        movies={movies}
-        onPressMovie={handlePressMovie}
-        onEndReached={onEndReached}
-        isFetching={isFetching}
-        emptyMessage={t(keyMap.no_movies)}
-        containerStyle={styles.list}
-      />
-    </View>
-  )
-})
+        <MoviesList
+          movies={movies}
+          onPressMovie={handlePressMovie}
+          onEndReached={onEndReached}
+          isFetching={isFetching}
+          emptyMessage={t(keyMap.no_movies)}
+          containerStyle={styles.list}
+        />
+      </View>
+    )
+  },
+)

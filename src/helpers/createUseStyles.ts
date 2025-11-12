@@ -7,19 +7,14 @@ import { scale } from './scale'
 type TStyle = ImageStyle & TextStyle & ViewStyle
 
 export const createUseStyles = <
-  T extends (params: {
-    insets: ReturnType<typeof useSafeAreaInsets>
-  }) => Record<string, TStyle>,
+  T extends (params: { insets: ReturnType<typeof useSafeAreaInsets> }) => Record<string, TStyle>,
 >(
-  getStyles: T
+  getStyles: T,
 ) => ({
   useStyles: () => {
     const insets = useSafeAreaInsets()
 
-    const styles = useMemo(
-      () => StyleSheet.create(scale(getStyles({ insets }))),
-      [insets]
-    )
+    const styles = useMemo(() => StyleSheet.create(scale(getStyles({ insets }))), [insets])
 
     return styles as ReturnType<T>
   },

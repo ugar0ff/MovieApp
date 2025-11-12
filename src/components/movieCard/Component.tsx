@@ -23,11 +23,7 @@ const Component = ({ movie, onPress, isFavorite, onToggleFavorite }: Props) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <HStack flex={1}>
-        <Image
-          source={imageUri}
-          style={styles.poster}
-          alt={movie.title}
-        />
+        <Image source={imageUri} style={styles.poster} alt={movie.title} />
         <VStack flex={1} p={2} justifyContent="space-between">
           <Text fontSize="md" bold numberOfLines={2}>
             {movie.title}
@@ -35,7 +31,11 @@ const Component = ({ movie, onPress, isFavorite, onToggleFavorite }: Props) => {
           <Text fontSize="sm" color="gray.700">
             ⭐ {movie.vote_average.toFixed(1)}
           </Text>
-          <FavoriteButton movie={movie} isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} />
+          <FavoriteButton
+            movie={movie}
+            isFavorite={isFavorite}
+            onToggleFavorite={onToggleFavorite}
+          />
         </VStack>
       </HStack>
     </TouchableOpacity>

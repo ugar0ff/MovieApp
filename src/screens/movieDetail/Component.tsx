@@ -21,7 +21,8 @@ const Component = ({ movie, isFavorite, onToggleFavorite }: TProps) => {
       px={4}
       py={3}
       style={styles.container}
-      contentContainerStyle={styles.contentContainer} >
+      contentContainerStyle={styles.contentContainer}
+    >
       <VStack space={4}>
         <Poster uri={movie.poster_path} />
         <MovieInfo movie={movie} />

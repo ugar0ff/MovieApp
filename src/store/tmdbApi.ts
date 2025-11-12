@@ -1,11 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Movie } from '@types'
 import Config from 'react-native-config'
-import {
-  getPopularMoviesUrl,
-  searchMoviesUrl,
-  getMovieDetailsUrl,
-} from '@api/tmdbApi'
+import { getPopularMoviesUrl, searchMoviesUrl, getMovieDetailsUrl } from '@api/tmdbApi'
 
 type MoviesResponse = {
   page: number
@@ -19,21 +15,17 @@ export const tmdbApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: Config.TMDB_DB,
   }),
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getPopularMovies: builder.query<MoviesResponse, number | undefined>({
-      query: (page) => getPopularMoviesUrl(page),
+      query: page => getPopularMoviesUrl(page),
     }),
     searchMovies: builder.query<MoviesResponse, { query: string; page?: number }>({
       query: ({ query, page }) => searchMoviesUrl(query, page),
     }),
     getMovieDetails: builder.query<Movie, number>({
-      query: (id) => getMovieDetailsUrl(id),
+      query: id => getMovieDetailsUrl(id),
     }),
   }),
 })
 
-export const {
-  useGetPopularMoviesQuery,
-  useSearchMoviesQuery,
-  useGetMovieDetailsQuery,
-} = tmdbApi
+export const { useGetPopularMoviesQuery, useSearchMoviesQuery, useGetMovieDetailsQuery } = tmdbApi

@@ -12,17 +12,12 @@ export type TScreenParams = {
   [ROUTES.Login]: undefined
 }
 
-type TProps = NativeStackNavigationProp<
-  TScreenParams & TMoviesScreenParams,
-  keyof TScreenParams
->
+type TProps = NativeStackNavigationProp<TScreenParams & TMoviesScreenParams, keyof TScreenParams>
 
 const Container = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigation = useNavigation<TProps>()
-  const { requestToken, loading, error, isLoggedIn } = useSelector(
-    (state: RootState) => state.auth
-  )
+  const { requestToken, loading, error, isLoggedIn } = useSelector((state: RootState) => state.auth)
 
   useEffect(() => {
     if (!requestToken) {
@@ -43,7 +38,7 @@ const Container = () => {
         // TODO: reorganize logic, if !requestToken we should disable the button
       }
     },
-    [dispatch, requestToken]
+    [dispatch, requestToken],
   )
 
   return <Component onLogin={handleLogin} loading={loading} error={error} />

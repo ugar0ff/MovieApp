@@ -16,8 +16,12 @@ const Component = ({ genres }: TProps) => {
 
   return (
     <VStack style={styles.container} space={1}>
-      <Text fontSize="sm" bold>{t(keyMap.genres)}:</Text>
-      <Text fontSize="sm" color="gray.700">{genres.map((g) => g.name).join(', ')}</Text>
+      <Text fontSize="sm" bold>
+        {t(keyMap.genres)}:
+      </Text>
+      <Text fontSize="sm" color="gray.700">
+        {genres.map(g => g.name).join(', ')}
+      </Text>
     </VStack>
   )
 }

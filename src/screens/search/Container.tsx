@@ -25,7 +25,7 @@ export const Container = () => {
 
   const { data, isLoading, isError, isFetching } = useSearchMoviesQuery(
     { query, page },
-    { skip: !query }
+    { skip: !query },
   )
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const Container = () => {
 
   const handlePressMovie = useCallback(
     (id: number) => navigation.navigate(ROUTES.MovieDetail, { movieId: id }),
-    [navigation]
+    [navigation],
   )
 
   const handleLoadMore = useCallback(() => {

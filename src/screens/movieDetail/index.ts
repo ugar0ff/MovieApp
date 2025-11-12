@@ -1,1 +1,4 @@
-export { default as MovieDetailScreen, type TScreenParams as TMovieDetailScreenParams } from './Container'
+export {
+  default as MovieDetailScreen,
+  type TScreenParams as TMovieDetailScreenParams,
+} from './Container'

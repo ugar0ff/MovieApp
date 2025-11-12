@@ -14,12 +14,18 @@ const Component = ({ movie }: TProps) => {
 
   return (
     <VStack space={3} style={styles.container}>
-      <Text fontSize="2xl" bold>{movie.title}</Text>
-      <Text fontSize="md">{t(keyMap.rating)}: {movie.vote_average.toFixed(1)}</Text>
+      <Text fontSize="2xl" bold>
+        {movie.title}
+      </Text>
+      <Text fontSize="md">
+        {t(keyMap.rating)}: {movie.vote_average.toFixed(1)}
+      </Text>
       <Text fontSize="sm" color="gray.500">
         {t(keyMap.release_date)}: {movie.release_date ?? t(keyMap.unknown)}
       </Text>
-      <Text fontSize="md" lineHeight={22}>{movie.overview}</Text>
+      <Text fontSize="md" lineHeight={22}>
+        {movie.overview}
+      </Text>
     </VStack>
   )
 }
