@@ -8,11 +8,12 @@
   "password": "Password",
   "loading": "Loading...",
   "error_loading_movie": "Error loading movie",
+  "error_loading_movies": "Error loading movies",
+  "search_placeholder": "Search movies...",
   "rating": "Rating",
   "release_date": "Release date",
   "genres": "Genres",
   "unknown": "Unknown",
   "add_to_favorites": "Add to Favorites",
-  "remove_from_favorites": "Remove from Favorites",
-  "error_loading_movies": "Error loading movies"
+  "remove_from_favorites": "Remove from Favorites"
 }

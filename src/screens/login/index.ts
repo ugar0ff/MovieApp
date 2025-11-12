@@ -1,1 +1,1 @@
-export { default as Login, type TScreenParams as TLoginScreenParams } from './Container'
+export { default as LoginScreen, type TScreenParams as TLoginScreenParams } from './Container'

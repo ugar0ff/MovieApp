@@ -1,19 +1,21 @@
-import React, { useState, useCallback, useEffect } from 'react'
-import { ActivityIndicator, Text, View } from 'react-native'
+import React, { useState, useCallback, useEffect, useLayoutEffect } from 'react'
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useGetPopularMoviesQuery } from '@store/tmdbApi'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Component from './Component'
 import { ROUTES } from '@constants'
-import type { TMovieDetailScreenParams } from '@screens/movieDetail'
+import type { TMovieDetailScreenParams } from '../movieDetail'
 import { keyMap, useTranslation } from '@localization'
 import type { Movie } from '@types'
+import { SearchIcon } from 'native-base'
+import type { TSearchScreenParams } from '../search'
 
 export type TScreenParams = {
   [ROUTES.Movies]: undefined
 }
 
-type TProps = NativeStackNavigationProp<TScreenParams & TMovieDetailScreenParams, keyof TScreenParams>
+type TProps = NativeStackNavigationProp<TScreenParams & TMovieDetailScreenParams & TSearchScreenParams, keyof TScreenParams>
 
 const Container = () => {
   const navigation = useNavigation<TProps>()
@@ -37,6 +39,20 @@ const Container = () => {
       })
     }
   }, [data, page])
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(ROUTES.Search)}
+          style={{ marginRight: 16 }}
+        >
+          <SearchIcon name="search" size={6} />
+        </TouchableOpacity>
+      ),
+      title: t(keyMap.movies),
+    })
+  }, [navigation, t])
 
   const handlePressMovie = useCallback(
     (id: number) => {

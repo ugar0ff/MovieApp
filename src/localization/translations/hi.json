@@ -8,11 +8,12 @@
   "password": "पासवर्ड",
   "loading": "लोड हो रहा है...",
   "error_loading_movie": "फ़िल्म लोड करने में त्रुटि",
+  "error_loading_movies": "फ़िल्में लोड करने में त्रुटि",
+  "search_placeholder": "फ़िल्में खोजें...",
   "rating": "रेटिंग",
   "release_date": "रिलीज़ की तारीख",
   "genres": "शैलियाँ",
   "unknown": "अज्ञात",
   "add_to_favorites": "पसंदीदा में जोड़ें",
-  "remove_from_favorites": "पसंदीदा से हटाएं",
-  "error_loading_movies": "फ़िल्में लोड करने में त्रुटि"
+  "remove_from_favorites": "पसंदीदा से हटाएं"
 }

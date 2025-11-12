@@ -11,6 +11,7 @@ export const ROUTES = {
   Favorites: 'Favorites',
   Settings: 'Settings',
   Languages: 'Languages',
+  Search: 'Search',
 } as const
 
 export const URLS = {

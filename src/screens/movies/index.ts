@@ -1,1 +1,1 @@
-export { default as Movies, type TScreenParams as TMoviesScreenParams } from './Container'
+export { default as MoviesScreen, type TScreenParams as TMoviesScreenParams } from './Container'

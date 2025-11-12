@@ -1,1 +1,1 @@
-export { default as Languages, type TScreenParams as TLanguagesScreenParams } from './Container'
+export { default as LanguagesScreen, type TScreenParams as TLanguagesScreenParams } from './Container'

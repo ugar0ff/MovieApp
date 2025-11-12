@@ -1,1 +1,1 @@
-export { default as Favorites, type TScreenParams as TFavoritesScreenParams } from './Container'
+export { default as FavoritesScreen, type TScreenParams as TFavoritesScreenParams } from './Container'
