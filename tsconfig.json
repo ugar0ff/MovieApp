@@ -1,5 +1,29 @@
 {
   "extends": "@react-native/typescript-config",
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["**/node_modules", "**/Pods"]
+  "exclude": ["**/node_modules", "**/Pods"],
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "types": ["react-native", "jest", "node"],
+    "moduleSuffixes": [".ios", ".android", ".native", ""],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "baseUrl": "src",
+    "paths": {
+      "@api/*": ["api/*"],
+      "@store/*": ["store/*"],
+      "@store": ["store/index"],
+      "@screens/*": ["screens/*"],
+      "@localization": ["localization/index"],
+      "@navigation/*": ["navigation/*"],
+      "@components/*": ["components/*"],
+      "@constants": ["constants/index"],
+      "@helpers/*": ["helpers/*"],
+      "@types": ["types/index"],
+      "@hooks/*": ["hooks/*"]
+    }
+  }
 }
