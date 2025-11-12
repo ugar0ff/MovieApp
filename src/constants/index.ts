@@ -13,3 +13,5 @@ export const ROUTES = {
   Languages: 'Languages',
   Search: 'Search',
 } as const
+
+export const languagesList = ['en', 'hi']

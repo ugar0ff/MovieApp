@@ -3,11 +3,14 @@ import * as RNLocalize from 'react-native-localize'
 
 import en from './translations/en.json'
 import hi from './translations/hi.json'
+import { languagesList } from '@constants'
 
 const i18n = new I18n({ en, hi })
-i18n.defaultLocale = 'en'
+const defaultLanguage = languagesList[0]
+i18n.defaultLocale = defaultLanguage
 
 const locales = RNLocalize.getLocales()
-i18n.locale = locales.length ? locales[0].languageCode : 'en'
+i18n.locale = locales.length && languagesList.includes(locales[0].languageCode) ? 
+    locales[0].languageCode : defaultLanguage
 
 export default i18n
