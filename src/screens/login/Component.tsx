@@ -32,6 +32,7 @@ const Component = ({ onLogin, loading, error }: TProps) => {
         placeholder={t(keyMap.password_placeholder)}
         value={password}
         onChangeText={setPassword}
+        autoCapitalize="none"
         secureTextEntry
         style={styles.input}
       />
